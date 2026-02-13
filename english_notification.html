@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URMILA_ERROR_404</title>
+    <style>
+        body { 
+            margin: 0; padding: 0; height: 100vh; 
+            background: #000; color: #00ff00; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            overflow: hidden; text-align: center;
+        }
+        #box { border: 2px solid #00ff00; padding: 20px; width: 85%; border-radius: 15px; background: rgba(0, 50, 0, 0.8); }
+        h1 { font-size: 1.2rem; margin-bottom: 20px; }
+        .btn-box { position: relative; height: 150px; width: 100%; margin-top: 20px; }
+        
+        button { 
+            padding: 12px 30px; font-size: 1rem; border-radius: 30px; 
+            border: none; font-weight: bold; position: absolute; cursor: pointer;
+        }
+        
+        #yes-btn { background: #ff1493; color: white; left: 50%; transform: translateX(-110%); top: 40px; }
+        #no-btn { background: #444; color: white; right: 50%; transform: translateX(110%); top: 40px; transition: 0.1s; }
+        
+        #final-page { display: none; background: #fff0f5; color: #d02090; position: fixed; top:0; left:0; width:100%; height:100%; z-index: 100; justify-content: center; align-items: center; flex-direction: column; }
+        .heart { font-size: 50px; color: red; animation: beat 0.5s infinite alternate; }
+        @keyframes beat { from { transform: scale(1); } to { transform: scale(1.2); } }
+    </style>
+</head>
+<body>
+
+    <div id="box">
+        <h1 id="msg">⚠️ WARNING: URMILA'S PHONE INFECTED BY CUTENESS!</h1>
+        <p>System update pending... <br>Kya aap aaj mere saath date par chalengi?</p>
+        
+        <div class="btn-box">
+            <button id="yes-btn" onclick="done()">HAAN! ✅</button>
+            <button id="no-btn" onclick="moveBtn()" ontouchstart="moveBtn()">NAHI ❌</button>
+        </div>
+    </div>
+
+    <div id="final-page">
+        <div class="heart">❤️</div>
+        <h1>YAAYYY URMILA!</h1>
+        <p>Ab piche mat hatna, screenshot le liya hai maine! 😉</p>
+        <p>Milte hain shaam ko! ✨</p>
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp1eXFqZzR4eXFqZzR4eXFqZzR4eXFqZzR4eXFqZzR4JnB0PW0mY3Q9Zw/K6S6WpAxoB8bK/giphy.gif" width="180">
+    </div>
+
+    <script>
+        function moveBtn() {
+            const btn = document.getElementById('no-btn');
+            // Screen ke andar hi random position dhundhna
+            const x = Math.random() * (window.innerWidth - btn.clientWidth - 20);
+            const y = Math.random() * (window.innerHeight - btn.clientHeight - 20);
+            
+            btn.style.position = 'fixed';
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+            btn.style.transform = 'none'; // Transform reset for fixed position
+        }
+
+        function done() {
+            document.getElementById('final-page').style.display = 'flex';
+        }
+    </script>
+</body>
+</html>
