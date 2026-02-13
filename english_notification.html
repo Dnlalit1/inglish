@@ -3,67 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URMILA_ERROR_404</title>
+    <title>Urmila Ka System Hang!</title>
     <style>
         body { 
             margin: 0; padding: 0; height: 100vh; 
-            background: #000; color: #00ff00; 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            overflow: hidden; text-align: center;
+            background: #ff0055; 
+            font-family: 'Comic Sans MS', cursive;
+            display: flex; justify-content: center; align-items: center;
+            overflow: hidden; text-align: center; color: white;
         }
-        #box { border: 2px solid #00ff00; padding: 20px; width: 85%; border-radius: 15px; background: rgba(0, 50, 0, 0.8); }
-        h1 { font-size: 1.2rem; margin-bottom: 20px; }
-        .btn-box { position: relative; height: 150px; width: 100%; margin-top: 20px; }
+        #main-card {
+            background: #fff; color: #333;
+            width: 85%; padding: 30px 15px;
+            border-radius: 20px; border: 5px solid #000;
+            box-shadow: 10px 10px 0px #000;
+        }
+        h1 { color: #ff0055; font-size: 1.8rem; text-transform: uppercase; }
+        p { font-weight: bold; font-size: 1.1rem; }
+        
+        .btn-container { margin-top: 30px; height: 150px; position: relative; }
         
         button { 
-            padding: 12px 30px; font-size: 1rem; border-radius: 30px; 
-            border: none; font-weight: bold; position: absolute; cursor: pointer;
+            padding: 15px 30px; font-size: 1.2rem; border-radius: 10px; 
+            border: 3px solid #000; font-weight: 900; cursor: pointer;
         }
         
-        #yes-btn { background: #ff1493; color: white; left: 50%; transform: translateX(-110%); top: 40px; }
-        #no-btn { background: #444; color: white; right: 50%; transform: translateX(110%); top: 40px; transition: 0.1s; }
-        
-        #final-page { display: none; background: #fff0f5; color: #d02090; position: fixed; top:0; left:0; width:100%; height:100%; z-index: 100; justify-content: center; align-items: center; flex-direction: column; }
-        .heart { font-size: 50px; color: red; animation: beat 0.5s infinite alternate; }
-        @keyframes beat { from { transform: scale(1); } to { transform: scale(1.2); } }
+        #yes-btn { background: #2ecc71; color: white; position: absolute; left: 5%; top: 0; width: 40%; }
+        #no-btn { background: #e74c3c; color: white; position: absolute; right: 5%; top: 0; width: 40%; transition: 0.1s; }
+
+        #final-blast { 
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: #fff; z-index: 999; flex-direction: column; justify-content: center; align-items: center;
+        }
+        .shadi-vibe { font-size: 50px; animation: spin 1s infinite linear; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
 
-    <div id="box">
-        <h1 id="msg">⚠️ WARNING: URMILA'S PHONE INFECTED BY CUTENESS!</h1>
-        <p>System update pending... <br>Kya aap aaj mere saath date par chalengi?</p>
-        
-        <div class="btn-box">
-            <button id="yes-btn" onclick="done()">HAAN! ✅</button>
-            <button id="no-btn" onclick="moveBtn()" ontouchstart="moveBtn()">NAHI ❌</button>
+    <div id="main-card">
+        <div id="setup">
+            <h1>⚠️ OYE URMILA!</h1>
+            <p>Tera phone hack ho gaya hai! <br> Sirf ek hi rasta hai bachne ka...</p>
+            <hr>
+            <p style="color: blue;">"Kya aaj mere saath date par chalegi?"</p>
+            
+            <div class="btn-container">
+                <button id="yes-btn" onclick="blast()">HAAN! 😍</button>
+                <button id="no-btn" onclick="bakchodi()" ontouchstart="bakchodi()">NAHI 🤮</button>
+            </div>
+            <p id="troll-text" style="color: red; margin-top: 10px; font-size: 0.8rem;"></p>
         </div>
     </div>
 
-    <div id="final-page">
-        <div class="heart">❤️</div>
-        <h1>YAAYYY URMILA!</h1>
-        <p>Ab piche mat hatna, screenshot le liya hai maine! 😉</p>
-        <p>Milte hain shaam ko! ✨</p>
-        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp1eXFqZzR4eXFqZzR4eXFqZzR4eXFqZzR4eXFqZzR4JnB0PW0mY3Q9Zw/K6S6WpAxoB8bK/giphy.gif" width="180">
+    <div id="final-blast">
+        <div class="shadi-vibe">🕺💃</div>
+        <h1 style="color: #ff0055;">KABOOL HAI! KABOOL HAI!</h1>
+        <p style="color: #333; font-size: 1.5rem;">Smart ladki ho Urmila! 😉</p>
+        <p>Taiyar ho jao, main aa raha hoon lene! 🚗💨</p>
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzh6d2Z0NXB0Ymx0ZzR4eXFqZzR4eXFqZzR4eXFqZzR4eXFqZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l1KdbHUPe27GQsJH2/giphy.gif" width="250">
+        <p><b>Screenshot bhej jaldi!</b></p>
     </div>
 
     <script>
-        function moveBtn() {
+        const roastMessages = [
+            "Arey try toh kar click karne ka! 😂",
+            "Nahi wala option tere naseeb mein nahi hai! 🚫",
+            "Phone hang ho jayega 'Nahi' dabaya toh! 🔥",
+            "Urmila, itni attitude? Button pakad ke dikha! 😎",
+            "Error 404: 'Nahi' not found! ❌"
+        ];
+
+        function bakchodi() {
             const btn = document.getElementById('no-btn');
-            // Screen ke andar hi random position dhundhna
-            const x = Math.random() * (window.innerWidth - btn.clientWidth - 20);
-            const y = Math.random() * (window.innerHeight - btn.clientHeight - 20);
+            const troll = document.getElementById('troll-text');
+            
+            // Randomly jump the button
+            const x = Math.random() * (window.innerWidth - btn.clientWidth - 40);
+            const y = Math.random() * (window.innerHeight - btn.clientHeight - 40);
             
             btn.style.position = 'fixed';
             btn.style.left = x + 'px';
             btn.style.top = y + 'px';
-            btn.style.transform = 'none'; // Transform reset for fixed position
+            
+            // Change roast message
+            troll.innerText = roastMessages[Math.floor(Math.random() * roastMessages.length)];
         }
 
-        function done() {
-            document.getElementById('final-page').style.display = 'flex';
+        function blast() {
+            document.getElementById('final-blast').style.display = 'flex';
         }
     </script>
 </body>
